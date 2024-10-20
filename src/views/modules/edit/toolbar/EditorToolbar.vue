@@ -3,7 +3,6 @@
     <div class="flex flex-col gap-4">
       <div class="font-bold text-[1.5rem] flex justify-between">
         <div>工具箱</div>
-
       </div>
       <div class="flex justify-between px-4 bg-slate-50 py-2">
         <div class="flex gap-4">
@@ -36,6 +35,7 @@
       </div>
       <History v-if="displayHistory" />
       <WallConfig v-if="paintConfig.obstacleType === 'wall'" />
+      <Monster v-else-if="paintConfig.obstacleType === 'monster'"></Monster>
     </div>
   </div>
 </template>
@@ -45,13 +45,13 @@ import { HistoryOutlined } from '@ant-design/icons-vue';
 import { obstacleTypeList, paintConfig } from '../data/config';
 import WallConfig from './WallConfig.vue';
 import History from '../history/History.vue';
+import Monster from './Monster.vue';
 
 const displayHistory = ref(false);
 
 const selectObstacle = (type: Paint) => {
   paintConfig.value.obstacleType = type;
 };
-
 
 const emit = defineEmits(['displaysStageConfig']);
 const openStageConfig = () => {

@@ -1,12 +1,14 @@
 <template>
-  <div
-    v-for="item in stageConfig.obstacles"
-    :key="item.x"
-    @click.stop="selete(item)"
-    @mousemove.stop=""
-    class="absolute obstacle"
-    :style="style(item)"
-  ></div>
+  <template v-for="item in stageConfig.obstacles" :key="item.x">
+    <div
+      @click.stop="selete(item)"
+      @mousemove.stop=""
+      v-if="item.type === 'wall'"
+      class="absolute obstacle"
+      :style="wallStyle(item)"
+    ></div>
+    <div    @click.stop="selete(item)" v-else-if="item.type === 'monster'" :style="monsterStyle(item)" class="absolute "></div>
+  </template>
 </template>
 
 <script setup lang="ts">
@@ -18,7 +20,7 @@ const selete = (item: Obstacle) => {
   emit('select', item);
 };
 
-const style = (item: Obstacle):CSSProperties => {
+const wallStyle = (item: Obstacle): CSSProperties => {
   return {
     left: `${item.x * stageConfig.value.size}px`,
     top: `${item.y * stageConfig.value.size}px`,
@@ -27,11 +29,19 @@ const style = (item: Obstacle):CSSProperties => {
     backgroundImage: ` url('${item.image}')`,
   };
 };
+
+const monsterStyle = (item: Obstacle): CSSProperties => {
+  return {
+    ...wallStyle(item),
+    backgroundImage: `url(${item.image})`,
+    backgroundPosition: `0px ${item.pos * 32}px`,
+  };
+};
 </script>
 
 <style lang="scss" scoped>
 .obstacle {
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }

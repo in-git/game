@@ -1,12 +1,12 @@
 import WallBlack from '@/assets/wall/wall_black.png';
 import WallRed from '@/assets/wall/wall_red.png';
 
-
 export const paintConfig = ref<PaintStyle>({
   /*  */
   image: WallBlack,
   /* 障碍物类型 */
   obstacleType: 'wall',
+  pos: 0,
 });
 
 export const paintConfigList = [

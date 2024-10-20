@@ -20,7 +20,7 @@ import { roundPosition } from '@/utils/core/math';
 import StageInit from './StageInit.vue';
 import EditorToolbar from './toolbar/EditorToolbar.vue';
 import { createObstacle, hasTargetObstacle } from '@/data/obstacle';
-import {paintConfig } from './data/config';
+import { paintConfig } from './data/config';
 import { stageConfig } from '@/data/data';
 
 const stageRef = ref<InstanceType<typeof StageInit> | null>(null);
@@ -45,6 +45,7 @@ const moveToCreateHero = () => {
       type: paintConfig.value.obstacleType,
       id: '',
       image: paintConfig.value.image,
+      pos: paintConfig.value.pos,
     });
   };
   const mouseup = () => {
@@ -65,9 +66,10 @@ const createAndDeleteHero = (e: MouseEvent) => {
     createObstacle({
       x,
       y,
-      type: 'wall',
+      type: paintConfig.value.obstacleType,
       id: '',
       image: paintConfig.value.image,
+      pos: paintConfig.value.pos,
     });
   }
 };

@@ -5,6 +5,8 @@ type Obstacle = {
   type: Paint;
   id: string;
   image: string;
+  /* 当为怪物时需要的精灵图坐标 */
+  pos:number
 };
 type ObstaclePos = {
   x: number;

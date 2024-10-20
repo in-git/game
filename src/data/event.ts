@@ -1,24 +1,24 @@
 import { moveX, moveY } from '@/data/actions';
 import { onKeyStroke } from '@vueuse/core';
-import { hero } from './data';
+import { stageConfig } from './data';
 
 onKeyStroke('ArrowDown', e => {
   e.preventDefault();
-  hero.value.figure = 'front';
+  stageConfig.value.hero.figure = 'front';
   moveY(1);
 });
 onKeyStroke('ArrowUp', e => {
-  hero.value.figure = 'back';
+  stageConfig.value.hero.figure = 'back';
   e.preventDefault();
   moveY(-1);
 });
 onKeyStroke('ArrowLeft', e => {
-  hero.value.figure = 'left';
+  stageConfig.value.hero.figure = 'left';
   e.preventDefault();
   moveX(-1);
 });
 onKeyStroke('ArrowRight', e => {
-  hero.value.figure = 'right';
+  stageConfig.value.hero.figure = 'right';
   e.preventDefault();
   moveX(1);
 });

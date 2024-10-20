@@ -1,7 +1,6 @@
 <template>
   <div class="grid-items bg-gray-50 h-full relative flex justify-center items-center">
     <Container>
-      <GridLines />
       <Hero />
       <Obstacle />
     </Container>

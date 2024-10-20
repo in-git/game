@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full relative grid-container" :style="style" ref="gridRef">
+  <div class="w-full h-full relative grid-container" id="grid-container" :style="style" ref="gridRef">
     <slot></slot>
   </div>
 </template>

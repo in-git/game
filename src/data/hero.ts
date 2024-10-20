@@ -1,12 +1,12 @@
-import { hero, hreoGifStep } from './data';
+import { hreoGifStep, stageConfig } from './data';
 
 export const moveTo = (x: number, y: number) => {
-  hero.value.left = x;
-  hero.value.top = y;
+  stageConfig.value.hero.left = x;
+  stageConfig.value.hero.top = y;
 };
 export const getHeroFigure = (): string => {
-  if(hreoGifStep.value>=3){
-    hreoGifStep.value=0
+  if (hreoGifStep.value >= 3) {
+    hreoGifStep.value = 0;
   }
   hreoGifStep.value++;
   let map: Record<string, string> = {
@@ -15,5 +15,5 @@ export const getHeroFigure = (): string => {
     front: '0',
     right: '64px',
   };
-  return map[hero.value.figure];
+  return map[stageConfig.value.hero.figure];
 };

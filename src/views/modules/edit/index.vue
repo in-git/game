@@ -1,30 +1,50 @@
 <template>
   <div
-    class="w-full h-full flex justify-center items-center bg-blue-950"
+    class="w-full h-full flex justify-center items-center bg-blue-950 relative"
     @click="createAndDeleteHero"
     @mousedown="moveToCreateHero"
   >
     <Container>
       <GridLines />
       <Obstacle @select="del" />
-      <StageInit />
+      <StageInit ref="stageRef" />
     </Container>
+    <div class="sidebar edit-toolbar bg-white absolute right-4 top-4 p-4">
+      <EditorToolbar @displays-stage-config="stageRef?.changeVisible()" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { roundPosition } from '@/utils/core/math';
 import StageInit from './StageInit.vue';
-import { createObstacle, hasTargetObstacle, obstacleList } from '@/data/obstacle';
+import EditorToolbar from './toolbar/EditorToolbar.vue';
+import { createObstacle, hasTargetObstacle } from '@/data/obstacle';
+import {paintConfig } from './data/config';
+import { stageConfig } from '@/data/data';
 
+const stageRef = ref<InstanceType<typeof StageInit> | null>(null);
+
+const isInner = (): boolean => {
+  const evt = window.event as MouseEvent;
+  const targetEl = evt.target as HTMLElement;
+  return !!targetEl.closest('#grid-container');
+};
 const moveToCreateHero = () => {
+  if (!isInner()) {
+    return;
+  }
   const mousemove = (e: MouseEvent) => {
+    if (!isInner()) {
+      return;
+    }
     const { x, y } = roundPosition(e);
     createObstacle({
       x,
       y,
-      type: 'wall',
+      type: paintConfig.value.obstacleType,
       id: '',
+      image: paintConfig.value.image,
     });
   };
   const mouseup = () => {
@@ -35,6 +55,9 @@ const moveToCreateHero = () => {
   window.addEventListener('mouseup', mouseup);
 };
 const createAndDeleteHero = (e: MouseEvent) => {
+  if (!isInner()) {
+    return;
+  }
   const { x, y } = roundPosition(e);
   let target = { x, y };
 
@@ -44,13 +67,19 @@ const createAndDeleteHero = (e: MouseEvent) => {
       y,
       type: 'wall',
       id: '',
+      image: paintConfig.value.image,
     });
   }
 };
 
 const del = (item: Obstacle) => {
-  obstacleList.value = obstacleList.value.filter(v => v.id != item.id);
+  stageConfig.value.obstacles = stageConfig.value.obstacles.filter(v => v.id != item.id);
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.sidebar {
+  width: 400px;
+  border-radius: 12px;
+}
+</style>

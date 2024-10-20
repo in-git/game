@@ -4,8 +4,8 @@
     :style="{
       height: `${stageConfig.size}px`,
       width: `${stageConfig.size}px`,
-      left: `${hero.left * stageConfig.size}px`,
-      top: `${hero.top * stageConfig.size}px`,
+      left: `${stageConfig.hero.left * stageConfig.size}px`,
+      top: `${stageConfig.hero.top * stageConfig.size}px`,
     }"
   >
     <div class="image w-[32px] h-[32px]" :style="heroStyle"></div>
@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { hero, hreoGifStep, stageConfig } from '@/data/data';
+import { hreoGifStep, stageConfig } from '@/data/data';
 import { getHeroFigure } from '@/data/hero';
 
 const heroStyle = computed(() => {

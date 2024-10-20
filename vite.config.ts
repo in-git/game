@@ -4,16 +4,22 @@ import createVitePlugins from './vite-plugins/index';
 import { fileURLToPath, URL } from 'url';
 import { defineConfig } from 'vite';
 import PkgConfig from 'vite-plugin-package-config';
+import { resolve } from 'path';
+/*
 
+*/
 /* 配置信息 */
 export default defineConfig(() => {
   return {
     base: '/',
     plugins: [createVitePlugins(), PkgConfig()],
     resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url)),
-      },
+      alias: [
+        {
+          find: '@',
+          replacement: resolve(__dirname, './src'),
+        },
+      ],
     },
     css: {
       preprocessorOptions: {

@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-items bg-gray-50 h-full relative flex justify-center items-center">
+  <div class="main bg-gray-50 h-full relative flex justify-center items-center">
     <Container>
       <Hero />
       <Obstacle />
@@ -19,4 +19,8 @@ stageConfig.value.obstacles.forEach(e => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.main {
+  background: #000;
+}
+</style>

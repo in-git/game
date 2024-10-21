@@ -1,7 +1,22 @@
 import { stageConfig } from '@/data/data';
 import { getLineX, getLineY } from './utils';
+import { delObstacle } from './obstacle';
+import { message } from 'ant-design-vue';
 
-
+const elementCollision = (type: ObstacleType, id: string) => {
+  if (type === 'wall') {
+    console.log('碰到了墙');
+    return false;
+  } else if (type === 'monster') {
+    console.log('碰到了怪物');
+    delObstacle(id);
+    message.warn('怪物被打死了');
+    return true;
+  } else if (type === 'prop') {
+    console.log('拾取了道具');
+    return true;
+  }
+};
 
 export const moveX = (direction = 1 | -1) => {
   const isMovingRight = direction > 0;
@@ -18,13 +33,7 @@ export const moveX = (direction = 1 | -1) => {
       (isMovingLeft && e.x + 1 === heroLeft && e.y === heroTop);
 
     if (isCollision) {
-      if (e.type === 'wall') {
-        console.log('碰到了墙');
-      } else if (e.type === 'monster') {
-        console.log('碰到了怪物');
-      } else if (e.type === 'prop') {
-        console.log('拾取了道具');
-      }
+      elementCollision(e.type, e.id);
       return e;
     }
     return false;
@@ -47,6 +56,7 @@ export const moveY = (direction = 1 | -1) => {
       (isMovingDown && e.y === heroTop + direction && e.x === heroLeft) ||
       (isMovingUp && e.y + 1 === heroTop && e.x === heroLeft);
     if (isCollision) {
+      elementCollision(e.type, e.id);
       return e;
     }
     return false;

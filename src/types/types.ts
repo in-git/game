@@ -2,7 +2,7 @@ type Obstacle = {
   x: number;
   y: number;
   /* 墙,道具 */
-  type: Paint;
+  type: ObstacleType;
   id: string;
   image: string;
   /* 当为怪物时需要的精灵图坐标 */
@@ -28,5 +28,4 @@ type Hero = {
   /* 人物姿态 */
   figure: 'left' | 'front' | 'back' | 'right';
 };
-
-type Paint = 'wall' | 'monster' | 'prop';
+type ObstacleType = 'wall' | 'monster' | 'prop';

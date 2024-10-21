@@ -30,6 +30,7 @@ const isInner = (): boolean => {
   const targetEl = evt.target as HTMLElement;
   return !!targetEl.closest('#grid-container');
 };
+/* 刷墙模式 */
 const moveToCreateHero = () => {
   if (!isInner()) {
     return;
@@ -55,6 +56,7 @@ const moveToCreateHero = () => {
   window.addEventListener('mousemove', mousemove);
   window.addEventListener('mouseup', mouseup);
 };
+/* 创建删除 */
 const createAndDeleteHero = (e: MouseEvent) => {
   if (!isInner()) {
     return;

@@ -49,7 +49,7 @@ import Monster from './Monster.vue';
 
 const displayHistory = ref(false);
 
-const selectObstacle = (type: Paint) => {
+const selectObstacle = (type: ObstacleType) => {
   paintConfig.value.obstacleType = type;
 };
 

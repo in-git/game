@@ -21,6 +21,6 @@ stageConfig.value.obstacles.forEach(e => {
 
 <style lang="scss" scoped>
 .main {
-  background: #000;
+  background: url('@/assets/common/background.jpg');
 }
 </style>

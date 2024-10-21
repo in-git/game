@@ -1,5 +1,10 @@
 <template>
-  <div class="w-full h-full relative grid-container" id="grid-container" :style="style" ref="gridRef">
+  <div
+    class="w-full h-full relative grid-container"
+    id="grid-container"
+    :style="style"
+    ref="gridRef"
+  >
     <slot></slot>
   </div>
 </template>
@@ -30,6 +35,7 @@ const style = computed((): CSSProperties => {
 
 <style lang="scss" scoped>
 .grid-container {
-  border: 1px solid gray;
+  border: 1px solid rgb(43, 42, 42);
+  background: #00000046;
 }
 </style>

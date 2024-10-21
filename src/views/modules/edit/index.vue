@@ -12,6 +12,9 @@
     <div class="sidebar edit-toolbar bg-white absolute right-4 top-4 p-4">
       <EditorToolbar @displays-stage-config="stageRef?.changeVisible()" />
     </div>
+    <div class="absolute left-4 top-0 p-4">
+      <History />
+    </div>
   </div>
 </template>
 
@@ -22,6 +25,7 @@ import EditorToolbar from './toolbar/EditorToolbar.vue';
 import { createObstacle, hasTargetObstacle } from '@/data/obstacle';
 import { paintConfig } from './data/config';
 import { stageConfig } from '@/data/data';
+import History from './history/History.vue';
 
 const stageRef = ref<InstanceType<typeof StageInit> | null>(null);
 

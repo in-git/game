@@ -1,6 +1,13 @@
 <template>
   <div class="config">
-    <a-modal v-model:open="visible" centered title="场景编辑" @ok="submit">
+    <a-modal
+      v-model:open="visible"
+      centered
+      title="场景编辑"
+      @ok="submit"
+      :maskClosable="false"
+      :keyboard="false"
+    >
       <a-card>
         <a-form ref="formRef" :model="form" @finish="submit">
           <a-form-item label="地图名字" name="name" required>
@@ -12,7 +19,7 @@
           <a-form-item label="画布高度" name="height" required>
             <a-input-number :max="900" v-model:value="form.height" :min="1"></a-input-number>
           </a-form-item>
-          <a-form-item label="网格大小" name="size" required>
+          <a-form-item label="网格大小" name="size" required help="必须能被画布宽/高整除">
             <a-input-number v-model:value="form.size" :min="1"></a-input-number>
           </a-form-item>
         </a-form>
@@ -23,6 +30,7 @@
 
 <script setup lang="ts">
 import { stageConfig } from '@/data/data';
+import router from '@/router';
 import useStageStore from '@/store/stage';
 import { useCloned } from '@vueuse/core';
 import { nanoid } from 'nanoid';

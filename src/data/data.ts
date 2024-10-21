@@ -1,10 +1,9 @@
 import { nanoid } from 'nanoid';
 
-
 export const stageConfig = ref<Stage>({
-  size: 36,
-  width: innerWidth,
-  height: innerHeight - 64,
+  size: 60,
+  width: 600,
+  height: 600,
   name: '',
   id: nanoid(),
   obstacles: [],

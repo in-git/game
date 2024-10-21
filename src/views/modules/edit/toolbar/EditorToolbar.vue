@@ -2,7 +2,7 @@
   <div class="">
     <div class="flex flex-col gap-4">
       <div class="font-bold text-[1.5rem] flex justify-between">
-        <div>工具箱</div>
+        <div>地图编辑</div>
       </div>
       <div class="flex justify-between px-4 bg-slate-50 py-2">
         <div class="flex gap-4">
@@ -17,15 +17,6 @@
         </div>
 
         <a-tooltip title="画布设置">
-          <a-button
-            shape="circle"
-            @click="displayHistory = !displayHistory"
-            :type="displayHistory ? 'primary' : 'ghost'"
-          >
-            <template #icon>
-              <HistoryOutlined />
-            </template>
-          </a-button>
           <a-button shape="circle" type="ghost" @click="openStageConfig">
             <template #icon>
               <SettingOutlined />
@@ -33,7 +24,7 @@
           </a-button>
         </a-tooltip>
       </div>
-      <History v-if="displayHistory" />
+
       <WallConfig v-if="paintConfig.obstacleType === 'wall'" />
       <Monster v-else-if="paintConfig.obstacleType === 'monster'"></Monster>
     </div>
@@ -41,13 +32,9 @@
 </template>
 
 <script setup lang="ts">
-import { HistoryOutlined } from '@ant-design/icons-vue';
 import { obstacleTypeList, paintConfig } from '../data/config';
 import WallConfig from './WallConfig.vue';
-import History from '../history/History.vue';
 import Monster from './Monster.vue';
-
-const displayHistory = ref(false);
 
 const selectObstacle = (type: ObstacleType) => {
   paintConfig.value.obstacleType = type;

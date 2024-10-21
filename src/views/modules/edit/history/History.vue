@@ -1,8 +1,11 @@
 <template>
   <div>
-    <div class="flex flex-col gap-4 mt-4 history-list p-4">
+    <div class="flex flex-col history-list w-[300px]">
       <div class="font-bold text-[1.5rem]">历史记录</div>
-      <ul class="max-h-[200px] overflow-auto" v-if="historyList.length > 0">
+      <ul
+        class="max-h-[200px] overflow-auto mt-4 flex flex-col gap-4"
+        v-if="historyList.length > 0"
+      >
         <li
           v-for="item in historyList"
           @click="select(item)"
@@ -55,6 +58,9 @@ const historyList = computed(() => store.$state.historyList);
 }
 .history-list {
   border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem;
+  background: white;
 }
 .active {
   background-color: var(--primary);

@@ -2,7 +2,7 @@ import autoprefixer from 'autoprefixer';
 import tailwindcss from 'tailwindcss';
 import createVitePlugins from './vite-plugins/index';
 import { defineConfig } from 'vite';
-// import PkgConfig from 'vite-plugin-package-config';
+import PkgConfig from 'vite-plugin-package-config';
 import { resolve } from 'path';
 /*
 
@@ -11,7 +11,7 @@ import { resolve } from 'path';
 export default defineConfig(() => {
   return {
     base: '/',
-    plugins: [createVitePlugins()],
+    plugins: [createVitePlugins(), PkgConfig()],
     resolve: {
       alias: [
         {

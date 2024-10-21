@@ -1,5 +1,5 @@
 import vue from '@vitejs/plugin-vue';
-// import OptimizationPersist from 'vite-plugin-optimize-persist';
+import OptimizationPersist from 'vite-plugin-optimize-persist';
 
 import ViteRestart from 'vite-plugin-restart';
 import { codeInspectorPlugin } from 'code-inspector-plugin';
@@ -24,7 +24,7 @@ export default function createVitePlugins() {
   vitePlugins.push(createVueComponents());
 
   /* 缓存插件 */
-  // vitePlugins.push(OptimizationPersist());
+  vitePlugins.push(OptimizationPersist());
 
   /* 自动导入图像插件 */
   vitePlugins.push(createViteImagesPlugins());

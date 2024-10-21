@@ -20,7 +20,7 @@ export const paintConfigList = [
   },
 ];
 
-export const obstacleTypeList: { type: Paint; label: string }[] = [
+export const obstacleTypeList: { type: ObstacleType; label: string }[] = [
   {
     type: 'wall',
     label: '绘制墙',

@@ -49,7 +49,6 @@ export default defineConfig(() => {
       cors: true, // 配置 CORS
     },
     build: {
-      target: ['modules'], // 设置最终构建的浏览器兼容目标
       // polyfillModulePreload: true, // 是否自动注入 module preload 的 polyfill
       outDir: 'dist', // 指定输出路径
       assetsDir: 'assets', // 指定生成静态文件目录

@@ -10,7 +10,7 @@ import { resolve } from 'path';
 /* 配置信息 */
 export default defineConfig(() => {
   return {
-    base: '/',
+    base: '/game/',
     plugins: [createVitePlugins(), PkgConfig()],
     resolve: {
       alias: [
@@ -50,7 +50,7 @@ export default defineConfig(() => {
     },
     build: {
       // polyfillModulePreload: true, // 是否自动注入 module preload 的 polyfill
-      outDir: 'dist', // 指定输出路径
+      outDir: 'docs', // 指定输出路径
       assetsDir: 'assets', // 指定生成静态文件目录
       cssCodeSplit: true, // 启用 CSS 代码拆分
       cssTarget: '', // 允许用户为 CSS 的压缩设置一个不同的浏览器 target 与 build.target 一致

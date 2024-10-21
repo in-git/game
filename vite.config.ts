@@ -1,7 +1,6 @@
 import autoprefixer from 'autoprefixer';
 import tailwindcss from 'tailwindcss';
 import createVitePlugins from './vite-plugins/index';
-import { fileURLToPath, URL } from 'url';
 import { defineConfig } from 'vite';
 import PkgConfig from 'vite-plugin-package-config';
 import { resolve } from 'path';
